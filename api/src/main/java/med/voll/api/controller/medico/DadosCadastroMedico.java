@@ -18,7 +18,10 @@ public record DadosCadastroMedico(
     
     @NotBlank
     @Email
-    String email, 
+    String email,
+    
+    @NotBlank
+    String telefone,
     
     @NotBlank
     // limita o conteúdo do crm a partir de uma expressão regular
