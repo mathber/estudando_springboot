@@ -1,4 +1,4 @@
-package med.voll.api.controller.paciente;
+package med.voll.api.domain.paciente;
 
 // devolvemos apenas as informações necessárias
 public record DadosListagemPaciente(Long id, String nome, String email, String cpf) {

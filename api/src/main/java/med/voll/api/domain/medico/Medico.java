@@ -1,47 +1,52 @@
-package med.voll.api.controller.paciente;
-import med.voll.api.controller.endereco.Endereco;
+package med.voll.api.domain.medico;
 
 import jakarta.persistence.*;
-import jakarta.validation.Valid;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import med.voll.api.domain.endereco.Endereco;
 
-/* JPA - Java Persistence API */
-@Table(name = "pacientes")
-@Entity(name = "Paciente")
+/* JPA -  Java Persistence API */
+
+@Table(name = "medicos")
+@Entity(name = "Medico")
+/* alguns imports que evitam a mais escrita no código */
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 
-public class Paciente {
+public class Medico {
 
-    @Id
+    @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
     private String nome;
     private String email;
     private String telefone;
-    private String cpf;
+    private String crm;
 
+    @Enumerated(EnumType.STRING)
+    private Especialidade especialidade;
+    
     @Embedded
     private Endereco endereco;
 
     private Boolean ativo;
 
-    public Paciente(DadosCadastroPaciente dados){
+    public Medico(DadosCadastroMedico dados){
         this.ativo = true;
         this.nome = dados.nome();
         this.email = dados.email();
         this.telefone = dados.telefone();
-        this.cpf = dados.cpf();
+        this.crm = dados.crm();
+        this.especialidade = dados.especialidade();
         this.endereco = new Endereco(dados.endereco());
     }
 
-    public void atualizarInformacoes(@Valid DadosAtualizacaoPaciente dados) {
+    public void atualizarInformacoes(DadosAtualizacaoMedico dados) {
+        
         if(dados.nome() != null){
             this.nome = dados.nome();
         }
@@ -56,6 +61,4 @@ public class Paciente {
     public void excluir() {
         this.ativo = false;
     }
-
-    
 }

@@ -1,10 +1,10 @@
-package med.voll.api.controller.paciente;
+package med.voll.api.domain.medico;
 
 import jakarta.validation.constraints.NotNull;
-import med.voll.api.controller.endereco.DadosEndereco;
+import med.voll.api.domain.endereco.DadosEndereco;
 
 // devolvemos apenas as informações necessárias
-public record DadosAtualizacaoPaciente(
+public record DadosAtualizacaoMedico(
     
     @NotNull
     Long id, 

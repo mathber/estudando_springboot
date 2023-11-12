@@ -1,10 +1,9 @@
-package med.voll.api.controller.medico;
-import med.voll.api.controller.endereco.DadosEndereco;
-
+package med.voll.api.domain.medico;
 // imports do Bean Validation
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import med.voll.api.domain.endereco.DadosEndereco;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.Valid;
 
